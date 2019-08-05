@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   <h:head>
+        
+        <title>Comentarios</title>
+        <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+        <style type="text/css">
+            .ui-dialog {
+                width: auto !important;
+                        }       
+        </style>
+
+    </h:head>
+    <h:body>
+                <ui:include src="/elementos/navbar.xhtml" />
+
+                
+                
+<!-- CONTENIDO -->
+
+
+<div class="container-fluid ">
+<div class="row mt-3">
+  <h:form id="frmNiveles">
+          
+      
+      
+      <h:outputText value="Correo:  " />
+    <h:inputText id="txtCorreoEst" value="#{comentario.correo_estudiante}" required="true" requiredMessage=" * Ingrese Correo">
+    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                  
+    </h:inputText>
+     <h:message for="txtCorreoEst" class="badge badge-danger"> </h:message>
+    <br/>
+    <br/>
+    <h:outputText value="Nombre:  " />
+    <h:inputText id="txtNOMBREEst" value="#{comentario.estudiante_comentario}" required="true" requiredMessage=" * Ingrese Nombre">
+    <f:validator validatorId="VBasica"></f:validator>
+                  </h:inputText>
+                  <h:message for="txtNOMBREEst" class="badge badge-danger"></h:message>
+                  
+                  <br/>
+    <br/>
+    <h:outputText value="Proyecto:  " />
+    <h:selectOneMenu value="#{comentario.id_proyecto}" class="btn btn-outline-secondary dropdown-toggle">                     
+        <f:selectItems value="#{group.hselectProyectos()}" ></f:selectItems>
+                    </h:selectOneMenu> 
+    
+    
+    <h:selectOneRadio id="rbtnNota" value="#{comentario.calificacion}" required="true" requiredMessage=" * Evalue el proyecto">
+   			<f:selectItem itemValue="1" itemLabel="Innovador" />
+   			<f:selectItem itemValue="2" itemLabel="Academico" />
+   			<f:selectItem itemValue="3" itemLabel="Basico" />
+   		</h:selectOneRadio>
+    <h:message for="rbtnNota" class="badge badge-danger"></h:message>
+                  
+    
+    <br/>
+    <br/>
+    <h:outputText value="Comentario:  " /><br/>
+    <h:inputTextarea id="txtNotaComentrioEst" value="#{comentario.nota_comentario}" required="true" requiredMessage=" * Ingresa tu comentario">
+    <f:validator validatorId="VTexto100"></f:validator>
+    </h:inputTextarea>
+    <h:message for="txtNotaComentrioEst" class="badge badge-danger"></h:message>
+     <br/> <br/>
+    
+     <h:commandButton value="Comentar" id="btnEnviarNivel" class="btn btn-primary btn-lg btn-block" action="#{comentariosInsertar.insertarComentario(comentario.nota_comentario, comentario.id_proyecto, comentario.calificacion, comentario.estudiante_comentario, comentario.correo_estudiante)}" >
+      </h:commandButton>
+    
+          
+      </h:form> 
+      
+      
+      
+      
+         </div>
+  </div>
+<!-- CONTENIDO -->
+                    
+  
+          <script src="js/popper.min.js" charset="utf-8"></script>       
+       <script src="js/bootstrap.min.js" charset="utf-8"></script>
+
+    </h:body>
+</html>

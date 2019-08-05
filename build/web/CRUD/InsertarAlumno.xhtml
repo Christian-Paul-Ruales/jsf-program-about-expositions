@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   <h:head>
+        
+        <title>Alumnos</title>
+        <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+        <style type="text/css">
+            .ui-dialog {
+                width: auto !important;
+                        }       
+        </style>
+    </h:head>
+    <h:body>
+                <ui:include src="/elementos/navbar.xhtml" />
+
+                
+                
+<!-- CONTENIDO -->
+
+
+<div class="container-fluid ">
+<div class="row mt-3">
+  <h:form id="frmNiveles">
+          
+      
+    
+       
+        
+      <!-- FORMULARIO -->
+     
+      
+      
+          <div class="container-fluid">
+            <div class="row">
+                <div class="col-3">
+                    <h:outputText value="Cedula: " />
+                </div>
+              <div class="col-4">
+                  <h:inputText id="txtCedulaAlumno" value="#{lider.cedula}" required="true" requiredMessage=" * Ingrese Cedula">
+                  <f:validator validatorId="VCedula"></f:validator>
+                  </h:inputText>
+                  <h:message for="txtCedulaAlumno" class="badge badge-danger"></h:message>
+                  
+                  <br/><br/>
+                  </div>
+             </div>
+              
+              <div class="row">
+              <div class="col-3"> 
+                  <h:outputText value="Nombre: " />
+              </div>
+              
+              <div class="col-4">
+                  <h:inputText id="txtNombreAlumno" value="#{lider.nombre}" required="true" requiredMessage=" * Ingrese Nombre">
+                  <f:validator validatorId="VBasica"></f:validator>
+                  </h:inputText>
+                  <h:message for="txtNombreAlumno" class="badge badge-danger"></h:message>
+                  <br/><br/>
+              </div>
+              </div>
+              
+              <div class="row">
+              <div class="col-3"> 
+                 <h:outputText value="Correo: " />
+              </div>
+              
+              <div class="col-4">
+                  <h:inputText id="txtCorreo" value="#{lider.email}" label="Email" validatorMessage="Campo Correo Ha obtenido un error">
+                  <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                  <f:validator validatorId="VTexto50"></f:validator>
+                  </h:inputText>
+                
+                  <h:message for="txtCorreo" class="badge badge-danger"> </h:message>
+                  <br/>
+              </div>
+              </div>
+              
+               
+               
+              
+              
+             
+            
+          </div>
+    
+    
+    <br/><br/><h:commandButton value="Insertar Alumno Nuevo" id="btnEnviarLider" class="btn btn-primary btn-lg btn-block" action="#{liderInsertar.insertarLider(lider.nombre, lider.cedula, lider.email)}" >
+                </h:commandButton>
+   <br/><br/>
+    <br/>
+   
+ 
+          
+      </h:form> 
+      
+      
+      
+      
+         </div>
+  </div>
+<!-- CONTENIDO -->
+                    
+  
+          <script src="js/popper.min.js" charset="utf-8"></script>       
+       <script src="js/bootstrap.min.js" charset="utf-8"></script>
+
+    </h:body>
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+   <h:head>
+        
+        <title>Nivel</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+
+    </h:head>
+    <h:body>
+                <ui:include src="/elementos/navbar.xhtml" />
+
+                
+                
+<!-- CONTENIDO -->
+
+
+<div class="container-fluid ">
+<div class="row mt-3">
+  <h:form id="frmNiveles">
+          
+      
+    <h:commandButton value="Agregar un Nuevo Nivel" class="btn btn-outline-success" action="CRUD/InsertarNivel" /> 
+          
+    <p:dataTable class="table table-bordered" var="entry" value="#{group.niveles.entrySet().toArray()}">
+       
+            <p:column headerText="Id del nivel">
+                <h:outputText value="${entry.key}" />
+            </p:column>
+            
+            <p:column headerText="Nivel" >
+                <h:outputText value="${group.buscarNivel(entry.key)}" />
+            </p:column>
+        
+          
+        </p:dataTable>
+       
+        
+      <!-- FORMULARIO -->
+     
+      
+      
+      <p:dialog header="Insertar Nivel" widgetVar="dlgNivel" showEffect="fade" hideEffect="explode" height="100">
+    <h:outputText value="Nivel:  " />
+    <h:inputText id="txtNombreNivel" value="#{nivel.nombre}"></h:inputText>
+    <br/>
+    <br/>
+    <h:commandButton value="Enviar" id="btnEnviarNivel" class="btn btn-primary btn-lg btn-block" action="#{nivelesInsertar.insertarNivel(nivel.nombre)}" >
+      </h:commandButton>
+    						           
+</p:dialog>
+          
+          
+      </h:form> 
+      
+      
+      
+      
+         </div>
+  </div>
+<!-- CONTENIDO -->
+                    
+  
+          <script src="js/popper.min.js" charset="utf-8"></script>       
+       <script src="js/bootstrap.min.js" charset="utf-8"></script>
+
+    </h:body>
+</html>

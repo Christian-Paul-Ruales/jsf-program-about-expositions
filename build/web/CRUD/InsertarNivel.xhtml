@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   <h:head>
+        
+        <title>Nivel</title>
+        <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+
+    </h:head>
+    <h:body>
+                <ui:include src="/elementos/navbar.xhtml" />
+
+                
+                
+<!-- CONTENIDO -->
+
+
+<div class="container-fluid ">
+<div class="row mt-3">
+  <h:form id="frmNiveles">
+          
+      
+   
+       
+        
+      <!-- FORMULARIO -->
+     
+      
+   
+    <h:outputText value="Nivel:  " />
+    <h:inputText id="txtNombreNivel" value="#{nivel.nombre}" required="true" requiredMessage=" * Ingrese Nivel">
+    <f:validator validatorId="VNiveles"></f:validator>
+    </h:inputText>
+    <h:message for="txtNombreNivel" class="badge badge-danger"> </h:message>
+    <br/>
+    <br/>
+    <h:commandButton value="Ingresar" id="btnEnviarNivel" class="btn btn-primary btn-lg btn-block" action="#{nivelesInsertar.insertarNivel(nivel.nombre)}" >
+      </h:commandButton>
+ 
+          
+          
+      </h:form> 
+      
+      
+      
+      
+         </div>
+  </div>
+<!-- CONTENIDO -->
+                    
+  
+          <script src="js/popper.min.js" charset="utf-8"></script>       
+       <script src="js/bootstrap.min.js" charset="utf-8"></script>
+
+    </h:body>
+</html>
